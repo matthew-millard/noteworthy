@@ -1,14 +1,18 @@
 {
-  "name": "note-taker",
+  "name": "noteworthy",
   "version": "1.0.0",
-  "description": "",
+  "description": "NoteWorthy is an application that enables its users to create and save their notes in a simulated database.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "nodemon"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
