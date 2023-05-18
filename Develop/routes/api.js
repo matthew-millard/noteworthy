@@ -10,6 +10,7 @@ api.get('/', (req, res) => {
 })
 
 api.post('/', (req, res) => {
+	console.log(req.method)
 	console.log(req.body)
 })
 
