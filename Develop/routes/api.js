@@ -1,6 +1,6 @@
 const api = require('express').Router()
 const path = require('path')
-const { readFile } = require('fs')
+const { readFile, writeFile } = require('fs')
 
 api.get('/', (req, res) => {
 	readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
@@ -10,8 +10,32 @@ api.get('/', (req, res) => {
 })
 
 api.post('/', (req, res) => {
-	console.log(req.method)
-	console.log(req.body)
+	const { title, text } = req.body
+
+	if (title && text) {
+		const newNote = {
+			title,
+			text,
+			id: 1,
+		}
+		readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
+			if (err) {
+				console.error(err)
+			} else {
+				const parsedNotes = JSON.parse(data)
+				parsedNotes.push(newNote)
+
+				writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(parsedNotes, null, 2), err => (err ? console.error(err) : console.info('Your note has been added to the database.')))
+			}
+		})
+		const response = {
+			status: 'Success',
+			body: newNote,
+		}
+		res.status(201).json(response)
+	} else {
+		res.status(500).json('Error, unable to save note.')
+	}
 })
 
 module.exports = api
