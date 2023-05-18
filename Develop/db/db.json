@@ -22,5 +22,15 @@
     "title": "Post Office",
     "text": "Send parcel at the post office",
     "id": 1
+  },
+  {
+    "title": "Wash the dishes",
+    "text": "I need to wash the dishes from lunch.",
+    "id": "6589a89f-b102-4c65-85c4-5bb0fd41af55"
+  },
+  {
+    "title": "Go for a jog",
+    "text": "Go for a jog with the dogs",
+    "id": "65c6b814-0169-4d75-a5f2-587b4cb621d3"
   }
 ]
