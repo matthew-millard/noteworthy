@@ -11,6 +11,7 @@ const app = express()
 
 // Middleware
 app.use(express.static('public'))
+app.use(express.json())
 
 // Routes
 app.use(routes)
