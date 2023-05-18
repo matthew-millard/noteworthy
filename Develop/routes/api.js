@@ -1,6 +1,7 @@
 const api = require('express').Router()
 const path = require('path')
 const { readFile, writeFile } = require('fs')
+const { v4: uuidv4 } = require('uuid')
 
 api.get('/', (req, res) => {
 	readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
@@ -16,7 +17,7 @@ api.post('/', (req, res) => {
 		const newNote = {
 			title,
 			text,
-			id: 1,
+			id: uuidv4(),
 		}
 		readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
 			if (err) {
