@@ -39,4 +39,8 @@ api.post('/', (req, res) => {
 	}
 })
 
+api.delete('/:id', (req,res) => {
+	
+})
+
 module.exports = api
