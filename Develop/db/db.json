@@ -1,36 +1,37 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text"
+    "title": "Bank",
+    "text": "Deposit cash into the business account.",
+    "id": "2dea63d3-5e44-4158-9738-e9a5a220ba62"
   },
   {
-    "title": "Vet Appointment",
-    "text": "Finn and Hamish yearly vaccines.",
-    "id": 1
+    "title": "Payroll",
+    "text": "Send payroll information to the account.",
+    "id": "770a907b-8247-406e-a352-54a456e06c13"
   },
   {
-    "title": "Dog walk",
-    "text": "Walk the dogs",
-    "id": 1
+    "title": "Inventory",
+    "text": "Complete a weekly stock take of all goods and materials.",
+    "id": "aff0526e-2b75-499c-b529-2107e5729a03"
   },
   {
-    "title": "Shopping",
-    "text": "Go shopping at fairview\n",
-    "id": 1
+    "title": "Suppliers",
+    "text": "Order materials from suppliers.",
+    "id": "b8e48a9f-16cb-449b-8c57-a6d22449bd6c"
   },
   {
-    "title": "Post Office",
-    "text": "Send parcel at the post office",
-    "id": 1
+    "title": "Advertising Campaign",
+    "text": "Launch a new social media advertising campaign.",
+    "id": "6e37a583-6492-41fd-96aa-a4384ebc806d"
   },
   {
-    "title": "Wash the dishes",
-    "text": "I need to wash the dishes from lunch.",
-    "id": "6589a89f-b102-4c65-85c4-5bb0fd41af55"
+    "title": "Social Media",
+    "text": "Create new social media content for the coming week ahead. ",
+    "id": "1dab03af-a796-4186-a531-67918e5ef3dd"
   },
   {
-    "title": "Go for a jog",
-    "text": "Go for a jog with the dogs",
-    "id": "65c6b814-0169-4d75-a5f2-587b4cb621d3"
+    "title": "Reviews",
+    "text": "Response to most recent reviews on Google.",
+    "id": "f65d180d-b318-4395-94f9-7616202099b6"
   }
 ]
