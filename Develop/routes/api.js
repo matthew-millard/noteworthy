@@ -39,8 +39,23 @@ api.post('/', (req, res) => {
 	}
 })
 
-api.delete('/:id', (req,res) => {
-	
+api.delete('/:id', (req, res) => {
+	const id = req.params.id // String
+
+	if (id) {
+		readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
+			if (err) console.error(err)
+			const parsedData = JSON.parse(data)
+			const updatedData = parsedData.filter(item => item.id !== id)
+			writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(updatedData, null, 2), err => (err ? console.error(err) : console.info('Your note has been removed from the database.')))
+		})
+		const response = {
+			status: 'Success',
+		}
+		res.status(201).json(response)
+	} else {
+		res.status(500).json('Error, unable to delete note.')
+	}
 })
 
 module.exports = api
