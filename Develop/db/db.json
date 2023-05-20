@@ -1,10 +1,5 @@
 [
   {
-    "title": "Bank",
-    "text": "Deposit cash into the business account.",
-    "id": "2dea63d3-5e44-4158-9738-e9a5a220ba62"
-  },
-  {
     "title": "Payroll",
     "text": "Send payroll information to the account.",
     "id": "770a907b-8247-406e-a352-54a456e06c13"
