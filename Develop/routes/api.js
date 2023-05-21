@@ -1,12 +1,15 @@
 const api = require('express').Router()
 const path = require('path')
 const { readFile, writeFile } = require('fs')
+const { readFileData, writeDataToFile } = require('../helpers/fs')
 const { v4: uuidv4 } = require('uuid')
 
+// File path to mock database
+const filePath = path.join(__dirname, '../db/db.json')
+
 api.get('/', (req, res) => {
-	readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
-		if (err) console.error(err)
-		res.status(200).json(JSON.parse(data))
+	readFileData(filePath).then(contents => {
+		res.status(200).json(JSON.parse(contents))
 	})
 })
 
@@ -19,38 +22,36 @@ api.post('/', (req, res) => {
 			text,
 			id: uuidv4(),
 		}
-		readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
-			if (err) {
-				console.error(err)
-			} else {
-				const parsedNotes = JSON.parse(data)
-				parsedNotes.push(newNote)
-
-				writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(parsedNotes, null, 2), err => (err ? console.error(err) : console.info('Your note has been added to the database.')))
+		readFileData(filePath).then(contents => {
+			const parsedNotes = JSON.parse(contents)
+			parsedNotes.push(newNote)
+			writeDataToFile(filePath, parsedNotes)
+			const response = {
+				status: 'Success',
+				body: newNote,
 			}
+			res.status(201).json(response)
+			console.info('Your note has been saved. 💾')
 		})
-		const response = {
-			status: 'Success',
-			body: newNote,
-		}
-		res.status(201).json(response)
 	} else {
-		res.status(500).json('Error, unable to save note.')
+		res.status(500).json('Invalid entry. Please make sure to include both a note title and text body. 🚫')
 	}
 })
 
 api.delete('/:id', (req, res) => {
-	const id = req.params.id // String
+	const id = req.params.id // string datatype
 
 	if (id) {
-		readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
+		readFile(filePath, 'utf-8', (err, data) => {
 			if (err) console.error(err)
 			const parsedData = JSON.parse(data)
 			const updatedData = parsedData.filter(item => item.id !== id)
-			writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(updatedData, null, 2), err => (err ? console.error(err) : console.info('Your note has been removed from the database.')))
+			writeDataToFile(filePath, updatedData)
+			console.info('Your note has been deleted. 🗑️')
 		})
 		const response = {
 			status: 'Success',
+			body: updatedData,
 		}
 		res.status(201).json(response)
 	} else {
