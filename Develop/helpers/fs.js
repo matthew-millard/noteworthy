@@ -1,3 +1,4 @@
+// Imports
 const { readFile, writeFile } = require('fs/promises')
 
 // readFile
@@ -20,4 +21,5 @@ async function writeDataToFile(filePath, data) {
 	}
 }
 
+// Exports
 module.exports = { readFileData, writeDataToFile }
