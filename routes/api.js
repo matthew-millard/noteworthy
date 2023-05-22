@@ -42,7 +42,7 @@ api.post('/', (req, res) => {
 
 // Removes note from db and returns the amended notes list
 api.delete('/:id', (req, res) => {
-	const id = req.params.id 
+	const id = req.params.id
 
 	if (id) {
 		readFileData(filePath).then(contents => {
@@ -50,17 +50,16 @@ api.delete('/:id', (req, res) => {
 			const updatedData = parsedData.filter(item => item.id !== id)
 			writeDataToFile(filePath, updatedData)
 			console.info('Your note has been deleted. 🗑️')
+			const response = {
+				status: 'Success',
+				body: updatedData,
+			}
+			res.status(201).json(response)
 		})
-		const response = {
-			status: 'Success',
-			body: updatedData,
-		}
-		res.status(201).json(response)
 	} else {
 		res.status(500).json('Error, unable to delete note.')
 	}
 })
-
 
 // Exports
 module.exports = api
